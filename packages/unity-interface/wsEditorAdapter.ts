@@ -62,6 +62,9 @@ export async function initializeUnityEditor(
       SendMessage(_obj, type, payload) {
         if (ws.readyState === ws.OPEN) {
           const msg = JSON.stringify({ type, payload })
+          if (DEBUG_MESSAGES) {
+            logger.info('<<<', msg)
+          }
           ws.send(msg)
         }
       },
